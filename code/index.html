@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style>
+
+			body {
+                font-family: Segoe UI Emoji;
+                text-align: center;
+                background-color:#666666;
+               -webkit-user-select: none;
+               -moz-user-select: none;
+               -ms-user-select: none;
+                user-select: none;
+                touch-action: pan-x pan-y pinch-zoom;
+            }
+
+			.RegButton {
+                height: 30vw;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 30vw;
+            }
+
+            .RErr {
+                font-size: 3.5vh;
+                text-align: left;
+                height: 5vh;
+                width: 80vw;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            table.RTable {
+                width: 80vw;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+		</style>
+
+        <script>
+
+			//URL of the device
+			my_url = "http://192.168.1.17/";
+
+            //handles to various parts of the screen. Initialized in myInitialize()
+			var RemoteErr, RemoteTable;
+
+            var got_touch_input = false;
+            var got_touch_move  = false;
+
+            var Button= [//object containing remote buttons
+                [//row
+                    ["🌞","light_on"],
+                    ["🌚","light_off"]
+                ]
+            ]
+
+            function myInitialize() {
+
+				RemoteErr = document.getElementById( "RemoteErr");
+				RemoteTable = document.getElementById( "RemoteTable");
+
+                var wico = ["🤖","🐙","🍖","🚀","🛸","🏳️‍🌈",
+                            "🚽","🚁","🦖","🦀","🐝","🦑",
+                            "🦕","🍤","🦐","🍄","🗿","🛫"];
+                var idx = Math.floor( Math.random() * wico.length);
+                RemoteErr.innerText = wico[idx];
+
+				ShowRemote();
+			}
+
+            function ShowRemote () {
+
+				var r,c;
+				RemoteTable.innerHTML = "";
+				for (r=0; r< Button.length; r++) {
+
+					var TR = document.createElement( "tr");
+					var TD = "";
+					for (var c=0; c<Button[r].length; c++) {
+                        TD=TD+"<td class='RegButton' id='buttonID_"+r+"_"+c+"'>" + (Button[r][c][0]) + "</td>";
+					}
+					TR.innerHTML = TD;
+					RemoteTable.appendChild( TR);
+				}
+			}
+
+            function add_button_listeners() {
+                var r, c;
+                for (r=0; r<Button.length; r++) {
+                    for (c=0; c<Button[r].length; c++) {
+                        var el = document.getElementById( "buttonID_"+r+"_"+c);
+                        if (el === null) { continue; }
+                        el.r = r;
+                        el.c = c;
+
+                        el.addEventListener( "touchstart", function(evt) {got_touch_move = false;} );
+                        el.addEventListener( "touchmove",  function(evt) {got_touch_move = true;} );
+                        el.addEventListener( "touchend", handle_touch);
+                        el.addEventListener( "click", handle_click);
+                    }
+                }
+            }
+
+            function handle_click( evt){
+
+                if (got_touch_input) {
+                    var r, c;
+                    for (r=0; r<Button.length; r++) {
+                        for (c=0; c<Button[r].length; c++) {
+                            var el = document.getElementById( "buttonID_"+r+"_"+c);
+                            if (el === null) { continue; }
+                            el.removeEventListener( "click", handle_click);
+                        }
+                    }
+                    return;
+                }
+                SendButton( evt);
+            }
+
+            function handle_touch( evt){
+                evt.preventDefault();
+                if (got_touch_move){
+                    return;
+                }
+                got_touch_input = true;
+                SendButton( evt);
+            }
+
+            function SendButton( evt) {
+
+                var r = evt.currentTarget.r;
+                var c = evt.currentTarget.c;
+
+				var B = Button[r][c];
+
+                RemoteErr.innerText = "🔜";
+                window.fetch( my_url + B[1], {
+                    method: "PUT"
+                    }).then(response => {
+                        RemoteErr.innerText = "✅️"
+                    }, error => {
+                        RemoteErr.innerText = "❌ " + error
+                    })
+			}
+
+		</script>
+
+	</head>
+	<body>
+        <div id="RemoteErr" class="RErr"></div>
+        <table id="RemoteTable" class="RTable"></table>
+		<script>
+            myInitialize();
+            add_button_listeners();
+        </script>
+	</body>
+</html>
