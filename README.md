@@ -6,7 +6,7 @@ This is a small WiFi device that hangs out on your network and serves up a web i
 
 This one was a request from a friend. He and his roommate were both working from home, and they wanted to be able to quickly and easily let each other know when one was on a work call. I sent them two of these little boxes.
 
-<img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6161.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6162.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6163.jpg'>
+<img width=20% src='https://github.com/probablyfine/IoTDnD/blob/main/photos/open-under2.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6161.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6162.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6163.jpg'>
 
 Tap the sun for on, tap the moon for off.
 
