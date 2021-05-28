@@ -2,9 +2,9 @@
 an internet-of-things Do Not Disturb light
 
 # What/Why
-This is a small WiFi device that hangs out on your network and serves up a web interface to any browser. You can use the web interface to turn a light on the device on and off.
+This is a small WiFi device that hangs out on your network and serves up a web interface to your browser. You use the web interface to turn a light on the device on and off.
 
-This one was a request from a friend who was working from home, and had a roommate who was also working from home, and they wanted to be able to let each other know when to keep the noise down so as to not interrupt a work call.
+This one was a request from a friend. He and his roommate were both working from home, and they wanted to be able to quickly and easily let each other know when one was on a work call. I sent them two of these little boxes.
 
 <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6161.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6162.jpg'> <img width=20% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6163.jpg'>
 
