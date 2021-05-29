@@ -4,7 +4,7 @@ an internet-of-things Do Not Disturb light
 # What/Why
 This is a small WiFi device that hangs out on your network and serves up a web interface to your browser. You use the web interface to turn a light on the device on and off.
 
-This one was a request from a friend. He and his roommate were both working from home, and they wanted to be able to quickly and easily let each other know when one was on a work call. I sent them two of these little boxes.
+This one was a request from a friend. He and his roommate were both working from home, and they wanted to be able to quickly and easily let each other know when one was on a work call. I initially suggested using a text message, but eventually I sent them two of these little boxes:
 
 <img width=17% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/open-under2.jpg'> <img width=17% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/IMG_6161.jpg'> <img width=17% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/top-unlit.jpg'> <img width=17% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/top-lit.jpg'> <img width=17% src='https://github.com/probablyfine/IoTDnD/raw/main/photos/bottom.jpg'>
 
